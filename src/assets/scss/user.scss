@@ -1,0 +1,35 @@
+@import '~bootstrap/scss/_functions';
+@import 'theme/functions';
+
+@import '~bootstrap/scss/mixins';
+@import 'theme/mixins';
+
+@import 'user-variables';
+@import 'theme/variables';
+@import '~bootstrap/scss/variables';
+
+//
+//
+// user.scss
+//
+// Place your own theme CSS or SCSS rules below this line, these rules will override any Bootstrap and theme variables.
+$gray: #bbbdbf;
+$blue: #1b75bb;
+
+.toggle-icon-wrapper {
+  margin-right: 5px !important;
+}
+
+.logo-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: .8em;
+  font-weight: bold;
+  color: $blue;
+
+  .gray {
+    color: $gray;
+  }
+  .blue {
+    color: $blue;
+  }
+}
