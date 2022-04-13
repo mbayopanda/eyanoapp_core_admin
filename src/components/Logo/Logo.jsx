@@ -164,7 +164,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
                 fontVariant="normal"
                 fontWeight="600"
               >
-                Admin
+                App
               </tspan>
             </text>
           </g>

@@ -1,50 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, ScrollArea, createStyles } from '@mantine/core';
-import {
-  Gauge,
-  User,
-  Apps,
-  Settings,
-} from 'tabler-icons-react';
 import UserButton from '../../UserButton/UserButton';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
-
-const mockdata = [
-  {
-    label: 'Dashboard',
-    initiallyOpened: true,
-    icon: Gauge,
-    links: [
-      { label: 'Users Sessions', link: '/' },
-      { label: 'Users Activities', link: '/' },
-    ],
-  },
-  {
-    label: 'Users',
-    icon: User,
-    links: [
-      { label: 'Users Management', link: '/' },
-      { label: 'Users Sessions', link: '/' },
-      { label: 'Users Activities', link: '/' },
-    ],
-  },
-  {
-    label: 'Applications',
-    icon: Apps,
-    links: [
-      { label: 'Application Management', link: '/' },
-    ],
-  },
-  {
-    label: 'Settings',
-    icon: Settings,
-    links: [
-      { label: 'Enable 2FA', link: '/' },
-      { label: 'Change password', link: '/' },
-      { label: 'Recovery codes', link: '/' },
-    ],
-  },
-];
+import { list as getMenuList } from '../../../api/menus';
+import { buildMenuTree } from 'services/buildMenuTree';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -85,7 +44,21 @@ const useStyles = createStyles((theme) => ({
 
 export default function NavbarNested(props) {
   const { classes } = useStyles();
-  const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
+  const [menus, setMenus] = useState([])
+
+  useEffect(() => {
+    let mounted = true;
+    getMenuList()
+      .then(items => {
+        if(mounted) {
+          const tree = buildMenuTree(items);
+          setMenus(tree)
+        }
+      });
+    return () => mounted = false;
+  }, []);
+
+  const links = menus.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
     <Navbar {...props} pt={0} className={classes.navbar}>
