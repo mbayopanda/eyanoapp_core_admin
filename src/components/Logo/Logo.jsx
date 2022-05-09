@@ -19,7 +19,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
             cx="20.06"
             cy="19.926"
             r="19.381"
-            fill={variant === 'white' || variant === 'default' ? '#085796' : '#FFF'}
+            fill={variant === 'white' || variant === 'default' ? '#F8F9FA' : '#FFF'}
             fillOpacity="1"
             fillRule="evenodd"
             strokeWidth="0.049"
@@ -28,7 +28,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
         <g transform="matrix(1.33333 0 0 -1.33333 0 816)">
           <g transform="matrix(.04812 0 0 .04812 15.045 593.445)">
             <path
-              fill={variant === 'white' || variant === 'default' ? '#FFF' : '#bcbec0'}
+              fill={variant === 'white' || variant === 'default' ? '#bcbec0' : '#bcbec0'}
               fillOpacity="1"
               fillRule="nonzero"
               stroke="none"
@@ -38,7 +38,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
           <g transform="matrix(.02032 0 0 .02032 15.045 585.065)">
             <g>
               <path
-                fill={variant === 'white' || variant === 'default' ? '#FFF' : '#bcbec0'}
+                fill={variant === 'white' || variant === 'default' ? '#bcbec0' : '#bcbec0'}
                 fillOpacity="1"
                 fillRule="nonzero"
                 stroke="none"
@@ -47,7 +47,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
             </g>
           </g>
           <path
-            fill={variant === 'white' || variant === 'default' ? '#FFF' : '#1b75bc'}
+            fill={variant === 'white' || variant === 'default' ? '#1b75bc' : '#1b75bc'}
             fillOpacity="1"
             fillRule="nonzero"
             stroke="none"
@@ -56,7 +56,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
           ></path>
           <g transform="matrix(.04812 0 0 .04812 19.484 600.962)">
             <path
-              fill={variant === 'white' || variant === 'default' ? '#FFF' : '#1b75bc'}
+              fill={variant === 'white' || variant === 'default' ? '#1b75bc' : '#1b75bc'}
               fillOpacity="1"
               fillRule="nonzero"
               stroke="none"
@@ -122,7 +122,7 @@ const Logo = ({ variant = 'default', width=40, height=40, ...others }) => {
             </text>
           </g>
           <g
-            fill={variant === 'white' || variant === 'default' ? '#085796' : '#085796'}
+            fill={variant === 'white' || variant === 'default' ? '#1C74BC' : '#1C74BC'}
             fillOpacity="1"
             stroke="none"
             fontFamily="Avenir Next"

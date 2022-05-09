@@ -19,8 +19,20 @@ const createConfigSlice = (set) => ({
   toggleSidebarCollapsed: () => set(state => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
 });
 
+const createSessionSlice = set => ({
+  ssoServer: '',
+  setSsoServer: (value) => set(() => ({ ssoServer: value })),
+  userEmail: '',
+  setUserEmail: (value) => set(() => ({ userEmail: value })),
+  userName: '',
+  setUserName: (value) => set(() => ({ userName: value })),
+  userIsAdmin: '',
+  setUserIsAdmin: (value) => set(() => ({ userIsAdmin: value })),
+});
+
 const useStore = create( (set, get) => ({
    ...createConfigSlice(set, get),
-}))
+   ...createSessionSlice(set, get),
+}));
 
 export default useStore;

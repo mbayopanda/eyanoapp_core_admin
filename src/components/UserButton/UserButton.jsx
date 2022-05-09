@@ -22,13 +22,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const UserButton = ({ image, name, email, icon, ...others }) =>  {
+const UserButton = ({ abbr, name, email, icon, ...others }) =>  {
   const { classes } = useStyles();
 
   return (
     <UnstyledButton className={classes.user} {...others}>
       <Group>
-        <Avatar src={image} radius="xl" />
+        <Avatar color="blue" radius="xl">{abbr}</Avatar>
 
         <div style={{ flex: 1 }}>
           <Text size="sm" weight={500}>
@@ -47,7 +47,7 @@ const UserButton = ({ image, name, email, icon, ...others }) =>  {
 }
 
 UserButton.propTypes = {
-  image: PropTypes.string,
+  abbr: PropTypes.string,
   name: PropTypes.string,
   email: PropTypes.string,
   icon: PropTypes.node,

@@ -15,7 +15,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['react'],
+  plugins: ['react', 'nodejs'],
   rules: {
     'react/no-unescaped-entities': 'off',
     'react/prop-types': 'error',
