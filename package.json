@@ -23,6 +23,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.2",
     "jose": "^4.8.1",
+    "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16",

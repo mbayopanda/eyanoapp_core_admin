@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Outlet } from "react-router-dom";
 import {
   AppShell,
   Aside,
@@ -63,7 +64,7 @@ export default function AppShellDemo() {
       aside={aside}
       header={header}
     >
-      <Text>Resize app to see responsive navbar in action</Text>
+      <Outlet />
     </AppShell>
   );
 }

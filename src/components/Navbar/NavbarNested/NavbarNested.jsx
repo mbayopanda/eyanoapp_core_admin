@@ -3,8 +3,8 @@ import { Navbar, ScrollArea, createStyles } from '@mantine/core';
 import UserButton from '../../UserButton/UserButton';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 import { list as getMenuList } from '../../../api/menus';
-import { buildMenuTree } from 'services/buildMenuTree';
-import useStore from 'store';
+import { buildMenuTree } from '../../../services/buildMenuTree';
+import useStore from '../../../store';
 
 const useStyles = createStyles((theme) => ({
   navbar: {

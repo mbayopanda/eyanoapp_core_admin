@@ -5,6 +5,11 @@ const session = require('express-session');
 const sso = require('./eyanoapp-sso');
 const app = express();
 
+const ssoServer = process.env.EYANOAPP_SSO_SERVER;
+const appToken = process.env.EYANOAPP_APP_TOKEN;
+const appServer = process.env.EYANOAPP_APP_SERVER;
+const urlQuery = `appToken=${appToken}&serviceURL=${appServer}`;
+
 app.use(
   session({
     secret : 'keyboard cat',
@@ -18,11 +23,21 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(sso({
-  sso_server : process.env.EYANOAPP_SSO_SERVER,
-  app_token : process.env.EYANOAPP_APP_TOKEN,
+  sso_server : ssoServer,
+  app_token : appToken,
 }));
 
-app.use(express.static('./build/'))
+app.use(express.static('./build/'));
+
+app.get('/login', (req, res) => {
+  const url = `${ssoServer}/login?${urlQuery}`;
+  res.redirect(url);
+});
+
+app.get('/logout', (req, res) => {
+  const url = `${ssoServer}/logout?${urlQuery}`;
+  res.redirect(url);
+});
 
 app.use((req, res, next) => {
   // catch 404 and forward to error handler

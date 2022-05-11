@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, createStyles } from '@mantine/core';
 import { ChevronLeft, ChevronRight, Folder } from 'tabler-icons-react';
 import PropTypes from 'prop-types';
+import { useNavigate } from '../../../../node_modules/react-router-dom/index';
+// import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -35,6 +37,7 @@ const useStyles = createStyles((theme) => ({
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     },
+    cursor: 'pointer',
   },
 
   chevron: {
@@ -43,22 +46,31 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function LinksGroup({ icon, label, initiallyOpened, links }) {
+  const navigate = useNavigate();
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === 'ltr' ? ChevronRight : ChevronLeft;
   const Icon = icon ? icon : Folder;
-  const items = (hasLinks ? links : []).map((link) => (
-    <Text
-      component="a"
-      className={classes.link}
-      href={link.link}
-      key={link.label}
-      onClick={(event) => event.preventDefault()}
-    >
-      {link.label}
-    </Text>
-  ));
+
+  const items = (hasLinks ? links : []).map((link) => {
+    const handleClickOnLink = (e) => {
+      if (!link.link) { return e.preventDefault(); }
+      navigate(link.link)
+    };
+    return (
+      <>
+        <Text
+          component="a"
+          className={classes.link}
+          key={link.label}
+          onClick={handleClickOnLink}
+        >
+          {link.label}
+        </Text>
+      </>
+    )
+  });
 
   LinksGroup.propTypes = {
     icon: PropTypes.node,

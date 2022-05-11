@@ -9,9 +9,12 @@ module.exports = (parameters = {
     const redirectURL = `${req.protocol}://${req.headers.host}${req.path}`;
     const ssoServer = parameters.sso_server;
     const { ssoToken } = req.query;
+    const ssoTokenInSession = req.session.token;
 
-    if (ssoToken) {
-      const decoded = await verifyJwtToken(ssoToken);
+    const TOKEN = ssoToken || ssoTokenInSession;
+
+    if (TOKEN) {
+      const decoded = await verifyJwtToken(TOKEN);
       if (!decoded) {
         // token expired, destroy session's variables
         delete req.session.user;
@@ -20,7 +23,7 @@ module.exports = (parameters = {
       } else {
         // token verified, refresh session's variables
         req.session.user = decoded;
-        req.session.token = ssoToken;
+        req.session.token = TOKEN;
       }
     }
 
@@ -32,6 +35,9 @@ module.exports = (parameters = {
       );
     }
 
+    // add token in cookies
+    res.cookie('ssoToken', req.session.token);
+    
     // continue the normal routing
     return next();
   };
